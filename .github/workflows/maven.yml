@@ -21,3 +21,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - name: List Target Directory Content
+      run: cd target && ls -all
+#    - name: Build with Maven
+#      run: mvn clean install
+#    - name: Build with Maven
+#      run: mvn clean install
