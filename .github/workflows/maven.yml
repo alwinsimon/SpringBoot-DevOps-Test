@@ -37,7 +37,6 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/temporary_private_key
           chmod 600 ~/.ssh/temporary_private_key
-          cat ~/.ssh/temporary_private_key  # Print the SSH key
 
       - name: Copy JAR to EC2
         run: |
