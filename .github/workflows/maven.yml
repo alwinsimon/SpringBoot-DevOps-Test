@@ -38,9 +38,12 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/temporary_private_key
           chmod 600 ~/.ssh/temporary_private_key
 
+      - name: List Target Directory Content on EC2 Before Copy
+        run: ssh -i ~/.ssh/temporary_private_key -p 22 ubuntu@15.206.0.236 'ls -all /'
+
       - name: Copy JAR to EC2
         run: |
           scp -o StrictHostKeyChecking=no -i ~/.ssh/temporary_private_key -P 22 target/SprinngBootDevopsTest-0.0.1-SNAPSHOT.jar ubuntu@15.206.0.236:/devopsTest/
 
-      - name: List Target Directory Content on EC2
+      - name: List Target Directory Content on EC2 After Copy
         run: ssh -i ~/.ssh/temporary_private_key -p 22 ubuntu@15.206.0.236 'ls -all /devopsTest/'
