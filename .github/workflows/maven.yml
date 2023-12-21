@@ -30,7 +30,10 @@ jobs:
 
     steps:
       - name: Install SSH key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
       - name: Copy JAR to EC2
         run: scp -i ~/.ssh/id_rsa target/SprinngBootDevopsTest-0.0.1-SNAPSHOT.jar ubuntu@15.206.0.236:/devopsTest/
       - name: List Target Directory Content
