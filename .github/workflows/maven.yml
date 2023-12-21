@@ -39,7 +39,7 @@ jobs:
           chmod 600 ~/.ssh/temporary_private_key
 
       - name: List Target Directory Content on EC2 Before Copy
-        run: ssh -i ~/.ssh/temporary_private_key -p 22 ubuntu@15.206.0.236 'ls -all /'
+        run: ssh -i ~/.ssh/temporary_private_key -p 22 -o StrictHostKeyChecking=no ubuntu@15.206.0.236 'ls -all /devopsTest/'
 
       - name: Copy JAR to EC2
         run: |
